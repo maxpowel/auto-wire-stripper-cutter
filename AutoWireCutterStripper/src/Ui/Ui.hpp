@@ -25,7 +25,6 @@ class Ui {
     int _encoder_value;
     Adafruit_SH1106G display;
     // Ui status
-    Component comps[NUM_OF_COMPS];
     int encoderPos;  // Current position/value of the encoder.
     int encoderLastPos;  // For OLED drawing.
     int encoderLastPosMain;  // For main loop.
@@ -47,6 +46,8 @@ class Ui {
 
     void run();
     void begin();
+
+    Component comps[NUM_OF_COMPS];
 
 };
 
