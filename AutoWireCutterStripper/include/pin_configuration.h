@@ -1,6 +1,7 @@
 
 // Seteppers configuration
-
+#ifndef PIN_CONFIG
+#define PIN_CONFIG
 //Linear motion
 const int LINMOT_STEPPERS_STEP_PIN = 25;
 const int LINMOT_STEPPERS_DIR_PIN = 26;
@@ -17,3 +18,9 @@ const int ENCODER_BTN_PIN = 5;
 // OLED display
 const int SCREEN_WIDTH = 128;
 const int SCREEN_HEIGHT = 64;
+
+#define ENABLE_WIFI true
+#define WIFI_SSID "SSID"
+#define WIFI_PASSWORD "PASSWORD"
+
+#endif
