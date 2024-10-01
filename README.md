@@ -18,14 +18,15 @@ The benefits I got when changing from generic drives to TMC2209 are:
  allows us to detect when the cut is done.
  * Silence: With StealthChop the motors are inaudible and the accuracy is still great. Anyway this is optional.
  * Control: Using UART protocol you can control the max current and much more parameters easily.
- * The movement is very smooth
+ * The motor movement is very smooth
 
 
 I also changed the library `Stepper` by `AccelStepper`. The reason is that AccelStepper does not block so is easier
 to control at every step if everything is going fine. It also handles accelerations easily so the cuts are less
 aggresive with the cable.
 
-The project is migrated from `Arduino IDE` to `platformio`.
+The project is migrated from `Arduino IDE` to `platformio`. The platformio project
+ is the `AutoWireCutterStripper`folder
 
 I also changed the encoder library to support generic EC11 encoders. I was not able to make it works with the original
 library. Also, the encoder change detection is done using interrupts instead of polling so we have more cpu cycles
@@ -41,8 +42,26 @@ user interfaces like a web hosted in the `ESP32`. Or using other kind of screens
 
 The last thing I did is a printable base to attach all the parts (base.stl and the openscad base.scad). It costs like 100g of material but for me it worth it.
 
-The last words are to thank the author for his creation. The original project is good as it is and mine is not better, just different but due the amount of changes I consider it a different application. The machine is the same, but
-the software is totally different.
+# PCB Board
+
+The design is not very complex but you have to solder so many cables. I made
+my first hand made board and once everything was fine I designed a board using
+`Kicad`. The gerbers are ready to be used with any PCB manufacturer at [kicad-wire-cutter/gerbers.zip](kicad-wire-cutter/gerbers.zip) but I also
+provide the kicad files so you can edit it and adapt it to your own needs.
+
+![Top view](kicad-wire-cutter/wire-cutter-front.png "Top view")
+![Back view](kicad-wire-cutter/wire-cutter-back.png "Back view")
+
+# State Machine
+
+The cutting process is managed by a state machine. I think that it makes the
+process easier to understand, easier to modify and robust. This is the diagram
+of the state machine
+
+![State Machine](readme_imgs/StateMachine.png "State Machine")
+
+It is very simple and apart form the variable `totalStrips` is just need
+to know the previous state.
 
 
 # Images of the machine I built
