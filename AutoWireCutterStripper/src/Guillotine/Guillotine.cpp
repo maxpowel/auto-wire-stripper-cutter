@@ -39,16 +39,16 @@ void Guillotine::begin() {
     serial->begin(115200);
     TMCdriver.begin();                                                                                                                                                                                                                                                                                                                            // UART: Init SW UART (if selected) with default 115200 baudrate
     TMCdriver.toff(5);                 // Enables driver in software
-    TMCdriver.rms_current(300);        // Set motor RMS current
+    TMCdriver.rms_current(900);        // Set motor RMS current
     //TMCdriver.microsteps(256);         // Set microsteps
     TMCdriver.microsteps(16);         // Set microsteps
 
-    TMCdriver.en_spreadCycle(true);  // To make the motors work warm
-    //TMCdriver.en_spreadCycle(false);   // false = StealthChop / true = SpreadCycl
-    //TMCdriver.pwm_autoscale(true);     // Needed for stealthChop
+    //TMCdriver.en_spreadCycle(true);  // To make the motors work warm
+    TMCdriver.en_spreadCycle(false);   // false = StealthChop / true = SpreadCycl
+    TMCdriver.pwm_autoscale(true);     // Needed for stealthChop
     TMCdriver.VACTUAL(0);
     TMCdriver.TCOOLTHRS(0xFFFFF);  // Configura la temperatura de umbral para protección
-    TMCdriver.TPOWERDOWN(128);// Tiempo de espera antes de reducir la corriente
+    //TMCdriver.TPOWERDOWN(128);// Tiempo de espera antes de reducir la corriente
     //TMCdriver.VACTUAL(5000);
 
     extruderStepper.setMaxSpeed(10000);    // Velocidad máxima en pasos por segundo

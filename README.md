@@ -52,6 +52,31 @@ provide the kicad files so you can edit it and adapt it to your own needs.
 ![Top view](kicad-wire-cutter/wire-cutter-front.png "Top view")
 ![Back view](kicad-wire-cutter/wire-cutter-back.png "Back view")
 
+This is the real PCB
+
+![Top view](readme_imgs/pcb.jpg "PCB")
+
+And the PCB with the elements soldered
+
+![Top view](readme_imgs/soldered.jpg "Soldered")
+
+It provides an extra power connector in case you prefer to use this
+kind.
+
+![Top view](readme_imgs/alternative_power.jpg "Extra power")
+
+My old board just for reference. It took a lot of time and care to build it.
+We all remember it forever but it is not needed anymore. Thank you for
+ your service little board.
+
+![Top view](readme_imgs/old_board.jpg "Old")
+
+This is how it looks in the case
+
+![Top view](readme_imgs/board_ready.jpg "Case view")
+
+
+
 # State Machine
 
 The cutting process is managed by a state machine. I think that it makes the
@@ -68,6 +93,11 @@ to know the previous state.
 
 ![Top view](readme_imgs/img1.jpg "Top view")
 ![Top view](readme_imgs/img2.jpg "Top view")
+![Top view](readme_imgs/top.jpg "Top view")
+![Top view](readme_imgs/top2.jpg "Top view")
+
 ![Front view](readme_imgs/img3.jpg "Front view")
+![Front view 2](readme_imgs/front.jpg "Front view 2")
 ![Side view](readme_imgs/img4.jpg "Side view")
 
+![Side view](readme_imgs/blade.jpg "Blade view")
