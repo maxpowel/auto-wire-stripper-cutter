@@ -29,7 +29,7 @@ void setup() {
     //guillotine.moveWireSteps(10000);
     //guillotine.moveBladeSteps(-5000);
     //guillotine.moveBlade(10);
-    guillotine.start(10, 10, 10, 5, 5);
+    //guillotine.start(10, 10, 10, 5, 5);
 }
 
 
