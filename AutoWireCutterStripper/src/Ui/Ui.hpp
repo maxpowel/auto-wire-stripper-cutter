@@ -46,6 +46,7 @@ class Ui {
 
     void run();
     void begin();
+    void refresh();
 
     Component comps[NUM_OF_COMPS];
 

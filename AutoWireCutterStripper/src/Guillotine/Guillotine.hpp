@@ -34,7 +34,17 @@ class Guillotine {
     float pre_wire;
     float length_wire;
     float pos_wire;
-    int gauge;
+    float gauge;
+    int _diag1_pin;
+    int _diag2_pin;
+    int _diag[2];
+    int _diag_threshold;
+    bool homing;
+    int home_ticks;
+    bool valid_home;
+    //Config
+    int steps_mm_extruder;
+    int steps_mm_linear;
     
      // State methods
     void state_blade_cut(State fromState);
@@ -46,8 +56,8 @@ class Guillotine {
 
   public:
     // Constructor
-    Guillotine(int LINMOT_STEP, int LINMOT_DIR, int EXTRUDER_STEP, int EXTRUDER_DIR, HardwareSerial * SerialPort);
-    void start(float pre, float length, float pos, int repetitions, int gauge);
+    Guillotine(int LINMOT_STEP, int LINMOT_DIR, int EXTRUDER_STEP, int EXTRUDER_DIR, HardwareSerial * SerialPort, int DIAG1_PIN, int DIAG2_PIN);
+    void start(float pre, float length, float pos, int repetitions, float cable_gauge);
     void run();
     void begin();
     // Métodos para mover la cuchilla y el alambre
@@ -55,8 +65,15 @@ class Guillotine {
     void moveBlade(float mm);
     void moveWire(float mm);
     void moveWireSteps(int steps);
-
+    int *diag();
+    void set_diag_treshold(uint8_t threshold);
+    uint8_t get_diag_treshold();
     void home();
+
+    void set_steps_mm_extruder(int value);
+    void set_steps_mm_linear(int value);
+    int get_steps_mm_extruder();
+    int get_steps_mm_linear();
 
 
    

@@ -2649,16 +2649,8 @@
 		(uuid "38f463c6-61fb-4f84-9e3a-ef06c3cdf65d")
 	)
 	(no_connect
-		(at 163.83 41.91)
-		(uuid "39c63267-55fa-43a2-83a1-d42d9bdf3375")
-	)
-	(no_connect
 		(at 219.71 62.23)
 		(uuid "47fb4f98-7ef4-416f-8865-bab2e4f7c9f6")
-	)
-	(no_connect
-		(at 255.27 41.91)
-		(uuid "52be85ea-8c54-4671-a2a3-4c01c571a632")
 	)
 	(no_connect
 		(at 125.73 135.89)
@@ -2681,6 +2673,10 @@
 		(uuid "8693be84-462d-412d-8cbe-bdbcf41ee0c2")
 	)
 	(no_connect
+		(at 255.27 44.45)
+		(uuid "9b8e5562-8dc6-4673-aa1a-43bf28c2a49d")
+	)
+	(no_connect
 		(at 125.73 140.97)
 		(uuid "a8721863-8e1a-4a66-a1c8-a8095cc1136b")
 	)
@@ -2691,6 +2687,10 @@
 	(no_connect
 		(at 125.73 168.91)
 		(uuid "b1ef0b43-acfe-4d2a-ae25-6b1dfe54bf19")
+	)
+	(no_connect
+		(at 163.83 44.45)
+		(uuid "bd65b556-5e82-4cd4-8b8c-761bd49b2e83")
 	)
 	(no_connect
 		(at 156.21 168.91)
@@ -2763,16 +2763,6 @@
 			(type default)
 		)
 		(uuid "0c749047-78ab-4b27-ae03-12ed657d0d7b")
-	)
-	(wire
-		(pts
-			(xy 270.51 44.45) (xy 270.51 173.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0cfab7aa-41e8-485a-813e-4d536f355190")
 	)
 	(wire
 		(pts
@@ -3076,6 +3066,16 @@
 	)
 	(wire
 		(pts
+			(xy 163.83 41.91) (xy 190.5 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4e1484b2-7827-4098-adac-7a599b8df210")
+	)
+	(wire
+		(pts
 			(xy 156.21 151.13) (xy 215.9 151.13)
 		)
 		(stroke
@@ -3226,6 +3226,16 @@
 	)
 	(wire
 		(pts
+			(xy 270.51 41.91) (xy 270.51 173.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7682b32f-00bc-4564-87e4-35a480c281b7")
+	)
+	(wire
+		(pts
 			(xy 125.73 161.29) (xy 120.65 161.29)
 		)
 		(stroke
@@ -3263,6 +3273,16 @@
 			(type default)
 		)
 		(uuid "78f35afb-debb-4617-b950-53a6797efa5f")
+	)
+	(wire
+		(pts
+			(xy 255.27 41.91) (xy 270.51 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7ef1f1ad-6e36-457d-98be-7b614442747b")
 	)
 	(wire
 		(pts
@@ -3476,7 +3496,7 @@
 	)
 	(wire
 		(pts
-			(xy 190.5 74.93) (xy 190.5 44.45)
+			(xy 190.5 41.91) (xy 190.5 74.93)
 		)
 		(stroke
 			(width 0)
@@ -3523,16 +3543,6 @@
 			(type default)
 		)
 		(uuid "bf9cbfd7-a1e8-4131-9a93-ebfe838e6300")
-	)
-	(wire
-		(pts
-			(xy 255.27 44.45) (xy 270.51 44.45)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c12a2c7c-85e1-4e9d-8853-34ba1f1261ae")
 	)
 	(wire
 		(pts
@@ -3804,15 +3814,15 @@
 		)
 		(uuid "fe126eb6-b1d4-4ee0-a4c4-31d6be2054b2")
 	)
-	(wire
-		(pts
-			(xy 190.5 44.45) (xy 163.83 44.45)
+	(text "The footprint is not exactly the tmc2209 form bigtreetech and this is why index, diag and motor pins may look wrong but they are ok according to the btt drivers"
+		(exclude_from_sim no)
+		(at 183.388 19.558 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
 		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fecc880c-3fd1-4548-a1c6-af487e1cb89a")
+		(uuid "3c3ac558-45b2-4ff4-b53e-bf777da51963")
 	)
 	(symbol
 		(lib_id "ESP32-DEVKIT-V1:ESP32-DEVKIT-V1")

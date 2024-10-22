@@ -79,6 +79,9 @@ void Ui::begin() {
 
 }
 
+void Ui::refresh() {
+    handleOLEDDisplay();
+}
 
 void Ui::run() {
     EC11Event e;
