@@ -2,9 +2,9 @@
 
 A 3D printed automatic wire stripper and cutter. You simply choose your measurements on a screen, press a button, and it does it all for you. It will strip the wire and cut the wire depending on the options you chose.
 
-There is a [video](https://youtu.be/pbuzLy1ktKM) associated with this repository/project, I highly recommend watching it before using this repo.
+This is my the machile I built [video](https://youtu.be/TFqQvDHJAgU)
 
-Check the original repo for extra details.
+Check the original repo for extra details, I highly recommend it!
 
 # Changes provided by this fork
 
@@ -33,14 +33,28 @@ library. Also, the encoder change detection is done using interrupts instead of 
  (the esp32 can use any gpio as interrupt so there is no reason for not using it) and smoother detection.
 
 The code was mostly refactorized to make it easier to extend and more organized. The code is now splitted into
-two main parts:
+three main parts:
  * Guillotine: A class to control the machine intself. The blades, movement, retraction... An easy to use driver class.
  * UI: All related to the UI. The buttons, display and encoder.
+ * WebUi: Connect it to wifi and control the machine with your computer
 
 The idea was to decouple the functionality from the UI. So now you could be able to control the blades using other
 user interfaces like a web hosted in the `ESP32`. Or using other kind of screens or buttons.
 
 The last thing I did is a printable base to attach all the parts (base.stl and the openscad base.scad). It costs like 100g of material but for me it worth it.
+
+# Wifi UI
+
+It is just a simple web page to control the machine
+![Web UI](readme_imgs/web-ui.png "Web UI")
+
+You can control the machine specifying milimeters or steps. It is very useful for the calibration process.
+Then the cable configuration like the one displayed in the oled screen and finally an extra option to control
+the threshold of the StallGuard (in case you want auto homing). Homing the the proccess to go a known neutral
+position (like in 3D printing).
+
+The application is done using angular under the directory "dashboard"
+
 
 # PCB Board
 

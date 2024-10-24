@@ -1,0 +1,223 @@
+<div class="min-h-screen flex">
+  <!-- Main content -->
+  <div class="flex-1 flex flex-col">
+    <!-- Header -->
+    <header class="h-16 bg-white shadow flex items-center justify-between px-6">
+      <h2 class="text-xl font-semibold">Wire Cut Machine Dashboard</h2>
+      <div>
+        <!-- Place this tag where you want the button to render. -->
+         @if(status$.isFetching()) {
+          Loading...
+         }
+        @if(status$.data(); as status) {
+          Version: {{status.version}}
+        }
+        
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="flex-1 p-6 bg-gray-100 ">
+
+      <div class="container mx-auto flex gap-4 justify-center">
+        @if(status$.isError()) {
+          <div class="bg-white shadow-lg rounded-lg p-6 mb-6">
+            <h4 class="text-xl font-semibold mb-6 text-red-600">Cannot connect to device</h4>
+          </div>
+        }@else if (status$.isFetching()) {
+          <div class="bg-white shadow-lg rounded-lg p-6 mb-6">
+            <h4 class="text-xl font-semibold mb-6 text-blue-600">Connecting...</h4>
+          </div>
+        }@else {
+          <!-- Card -->
+          <div class="bg-white shadow-lg rounded-lg p-6 mb-6">
+            <h4 class="text-xl font-semibold mb-6">Milimeters Control</h4>
+
+            <div class="flex gap-12">
+              <div>
+                <div class="flex flex-col items-center space-y-4">
+                  <!-- Botón flecha hacia arriba -->
+                  <button (click)="up()" class="flex items-center justify-center w-16 h-16 bg-blue-600 text-white rounded-full shadow hover:bg-blue-700">
+                    <i class="fas fa-up-long text-2xl"></i>
+                  </button>
+                
+                  <!-- Botón casa -->
+                  <button class="flex items-center justify-center w-16 h-16 bg-green-600 text-white rounded-full shadow hover:bg-green-700">
+                    <i class="fas fa-home text-2xl"></i>
+                  </button>
+                
+                  <!-- Botón flecha hacia abajo -->
+                  <button (click)="down()" class="flex items-center justify-center w-16 h-16 bg-red-600 text-white rounded-full shadow hover:bg-red-700">
+                    <i class="fas fa-down-long text-2xl"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex flex-col items-center gap-4">
+                  <!-- Botón flecha hacia arriba -->
+                  <div>
+                    <label for="mm" class="block mb-2 text-sm font-medium text-gray-900">Step size in mm</label>
+                    <input [(ngModel)]="stepSize" type="text" id="mm" class="bg-gray-50 border border-blue-300 text-blue-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="1" required />
+                </div>
+
+                <div class="flex flex-col items-center w-52">
+                  Every click will move the blade {{stepSize}}mm
+                </div>
+                
+                  
+                <div class="flex gap-10">
+                  <button (click)="extrude()" class="flex items-center justify-center bg-blue-600 text-white rounded shadow hover:bg-blue-700 py-3 px-3">
+                    Extrude
+                  </button>
+
+                  <button (click)="retract()" class="flex items-center justify-center bg-green-600 text-white rounded shadow hover:bg-green-700 py-3 px-3">
+                    Retract
+                  </button>
+                </div>
+
+
+
+                </div>
+              </div>
+            </div>
+            
+          </div>
+
+          <!-- Card -->
+          <div class="bg-white shadow-lg rounded-lg p-6 mb-6">
+            <h4 class="text-xl font-semibold mb-6">Steps Control (for calibration)</h4>
+
+            <div class="flex gap-12">
+              <div>
+                <div class="flex flex-col items-center space-y-4">
+                  <!-- Botón flecha hacia arriba -->
+                  <button (click)="upSteps()" class="flex items-center justify-center w-16 h-16 bg-blue-600 text-white rounded-full shadow hover:bg-blue-700">
+                    <i class="fas fa-up-long text-2xl"></i>
+                  </button>
+                
+                  <!-- Botón casa -->
+                  <button class="flex items-center justify-center w-16 h-16 bg-green-600 text-white rounded-full shadow hover:bg-green-700">
+                    <i class="fas fa-home text-2xl"></i>
+                  </button>
+                
+                  <!-- Botón flecha hacia abajo -->
+                  <button (click)="downSteps()" class="flex items-center justify-center w-16 h-16 bg-red-600 text-white rounded-full shadow hover:bg-red-700">
+                    <i class="fas fa-down-long text-2xl"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex flex-col items-center gap-4">
+                  <!-- Botón flecha hacia arriba -->
+                  <div>
+                    <label for="steps" class="block mb-2 text-sm font-medium text-gray-900">Step multiplier</label>
+                    <input [(ngModel)]="stepsMultiplier" type="text" id="steps" class="bg-gray-50 border border-blue-300 text-blue-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="1" required />
+                </div>
+                
+                <div class="flex flex-col items-center w-52">
+                  Every click will move the blade {{stepsMultiplier}} steps
+                </div>
+
+                <div class="flex gap-10">
+                  <button (click)="extrudeSteps()" class="flex items-center justify-center bg-blue-600 text-white rounded shadow hover:bg-blue-700 py-3 px-3">
+                    Extrude
+                  </button>
+
+                  <button (click)="retractSteps()" class="flex items-center justify-center bg-green-600 text-white rounded shadow hover:bg-green-700 py-3 px-3">
+                    Retract
+                  </button>
+                </div>
+                  
+                </div>
+              </div>
+            </div>
+            
+          </div>
+
+
+          <!-- Card -->
+          <div class="bg-white shadow-lg rounded-lg p-6 mb-6">
+            <h4 class="text-xl font-semibold mb-6">Cable configuration</h4>
+            <form [formGroup]="wireForm" (ngSubmit)="onSubmit()">
+            <div class="flex flex-col gap-4">
+              <div>
+                <div class="flex items-center pb-4">
+                  <!-- Líneas -->
+                  <div class="w-16 h-1 bg-yellow-500"></div>
+                  <!-- Cuerpo de la resistencia -->
+                  <div class="w-20 h-8 bg-red-500 border-2 border-black items-center justify-center relative">
+                  </div>
+                  <!-- Líneas -->
+                  <div class="w-16 h-1 bg-yellow-500"></div>
+              </div>
+
+              <div>
+                <div class="flex items-center gap-2">
+                  <!-- Líneas -->
+                  <input formControlName="pre" placeholder="mm" type="number" class="w-16 bg-gray-50 border border-blue-300 text-blue-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5" />
+                  <!-- Cuerpo de la resistencia -->
+                  <input formControlName="length"  placeholder="mm" type="number" class="w-16 bg-gray-50 border border-blue-300 text-blue-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5" />
+                  <!-- Líneas -->
+                  <input formControlName="post"  placeholder="mm" type="number" class="w-16 bg-gray-50 border border-blue-300 text-blue-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5" />
+                  </div>
+              </div>
+
+              </div>
+              <div class="flex gap-4 pt-2">
+                <input formControlName="repetitions"  type="number" placeholder="Repetitions" class="w-28 bg-gray-50 border border-blue-300 text-blue-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5" />
+                <input formControlName="gauge" type="number" placeholder="Gauge" class="w-20 bg-gray-50 border border-blue-300 text-blue-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5" />
+              
+            </div>
+            
+            <div class="flex flex items-center align-center gap-6 pt-2 justify-center">
+              
+               @if(wireForm.invalid) {
+                <div>Please complete all fields</div>
+               }@else {
+                <button [disabled]="wireForm.invalid" [ngClass]="{'bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed': wireForm.invalid, 'bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400':wireForm.valid}" (click)="run()">
+                  Run
+                </button>
+               }
+              @if(running()){
+                <button (click)="up()" class="flex items-center justify-center w-16 h-12 bg-red-600 text-white rounded shadow hover:bg-red-700">
+                  Abort
+                </button>
+              }
+              
+            </div>
+            </div>
+          </form>
+          </div>
+
+          <!-- Card -->
+          <div class="bg-white shadow-lg rounded-lg p-6 mb-6">
+            <h4 class="text-xl font-semibold mb-6">Diag Threshold</h4>
+            <form [formGroup]="thresholdForm" (ngSubmit)="onSubmit()">
+            
+              
+                <input formControlName="threshold"  type="number" placeholder="Threshold" class="w-28 bg-gray-50 border border-blue-300 text-blue-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5" />
+
+            <div class="flex flex items-center align-center gap-6 pt-2 justify-center">
+              
+               @if(thresholdForm.invalid) {
+                <div>Please complete all fields</div>
+               }@else {
+                <button [disabled]="thresholdForm.invalid" [ngClass]="{'bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed': wireForm.invalid, 'bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400':thresholdForm.valid}" (click)="saveThreshold()">
+                  Set threshold
+                </button>
+               }
+              
+            </div>
+          </form>
+          </div>
+
+        }
+      </div>
+    
+      
+
+    </main>
+  </div>
+</div>
