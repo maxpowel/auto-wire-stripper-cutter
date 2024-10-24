@@ -2,7 +2,9 @@
 
 A 3D printed automatic wire stripper and cutter. You simply choose your measurements on a screen, press a button, and it does it all for you. It will strip the wire and cut the wire depending on the options you chose.
 
-This is my the machile I built [video](https://youtu.be/TFqQvDHJAgU)
+![Top view](readme_imgs/top2.jpg "Top view")
+
+You can see it in action! [video](https://youtu.be/TFqQvDHJAgU)
 
 Check the original repo for extra details, I highly recommend it!
 
